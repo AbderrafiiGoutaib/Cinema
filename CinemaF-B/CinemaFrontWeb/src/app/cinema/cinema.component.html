@@ -1,0 +1,107 @@
+<div class="container">
+  <div class ="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills mr-8" *ngIf="villes">
+<!--        <li role="presentation" class="active" *ngFor="let v of villes._embedded.villes">-->
+<!--            {{-->
+<!--                v.name-->
+<!--          }}-->
+<!--        </li>-->
+        <div class="list-group">
+          <a href="#" class="list-group-item disabled">
+            La liste des Viles
+          </a>
+          <a  class="list-group-item"  [ngClass]="v==currentVille?'active':''"   *ngFor="let v of villes._embedded.villes" (click)="onGetCinema(v)" >
+            {{
+            v.name
+            }}
+          </a>
+
+        </div>
+
+      </ul>
+
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">La liste des cinema</div>
+        <div class="panel-body">
+          <ul *ngIf="cinemas" class="nav nav-pills">
+            <li [ngClass]="c==currentCinema?'active':''" *ngFor="let c of cinemas._embedded.cinemas" >
+             <a (click)="onGetSalle(c)"> {{c.name}}</a>
+            </li>
+          </ul><br>
+          <div class="row" *ngIf ="salles">
+            <div *ngFor="let s of salles._embedded.salles">
+              <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">{{s.name}}</div><br>
+                <div class="panel-body" *ngIf="s.projections">
+<!--                  <div class="col-xs-6 col-md-3">-->
+                    <a  class="thumbnail">
+<!--                      <img src="{{ cinemaService.host+'/imageFilm/'+s.projections._embedded.projections[0].film.id }}" alt="...">-->
+<!--                      -->
+                      <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                          <div class="col-md-4">
+                            <img width="120" src="{{ cinemaService.host+'/imageFilm/'+s.projections._embedded.projections[0].film.id }}" alt="...">
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <div class="thumbnail">
+                                <ul class="list-group">
+                                <li class="list-group-item" disabled=""><p><strong>Les seances :</strong></p></li>
+                                <li  [ngClass]="p==currentProjection?'active':''"  (click)="GetTicketsPlaces(p)" class="list-group-item" *ngFor="let p of s.projections._embedded.projections">
+                                  {{p.seance.heureDebut}} || Prix : {{p.prix|number:'0.00'}} DH
+                                </li>
+                              </ul></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a><div *ngIf="currentProjection">
+<!--                  <div *ngIf="currentProjection.tickets"></div>-->
+                  <div *ngIf="s.id==currentProjection.salle.id">
+                  <a  class="thumbnail" *ngIf="currentProjection.tickets">
+
+<!--                    <nav aria-label="Page navigation">-->
+<!--                      <ul class="pagination">-->
+<!--                        <li>-->
+                          <p><strong class="marginTickets">Choisisez vos tickets.</strong></p>
+                          <button class="margin {{getTicketsClass(t)}}"  (click)="onSelectTicket(t)" [disabled]="t.reserve"  *ngFor="let t of currentProjection.tickets._embedded.tickets">
+
+                          {{t.place.numeroPlace}}</button>
+                          <div *ngIf="selectedTickets.length > 0">
+                          <form #f="ngForm"  (ngSubmit)="onPayTickets(f.value)" >
+                            <div class="form-group">
+                              <label class="control-label">Nom Client : </label>
+                              <input class="form-control " type="text" name="nomClient" ngModel>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label ">Code Payement : </label>
+                              <input class="form-control  " type="text" name="codePayement" ngModel>
+                            </div>
+                            <button type="submit" class="btn btn-info margin">Valider</button>
+
+                          </form></div>
+<!--                        </li>-->
+
+
+<!--                      </ul>-->
+<!--                    </nav>-->
+                 </a></div></div>
+<!--                  </div>-->
+                </div>
+
+
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
