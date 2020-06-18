@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>les Projections du film</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card text-center">
+        <div class="card-header">
+            <h1>les Projections du film</h1>
+            <form class="form-inline">
+                <input type="hidden" name="idf"  th:value="${idf}">
+                <input class="form-control mr-sm-2 " type="search" placeholder="Recherche par ville" name="keyword" th:value="${keyword}" aria-label="Search">
+                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Rechercher</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" style="margin:5px" type="submit" ><a>Ajouter</a></button>
+            </form>
+        </div>
+
+        <div class="m-5">
+            <div class="container">
+
+                    <div class="col"  style=" display: flex ; justify-content: flex-start  ; margin: 8px ">
+                        <div class="card" style="width: 18rem ; margin: 8px" th:each="p:${projection}">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text ="${p.film.getTitre()}"></h5>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text ="${p.salle.getName()}"></h6>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text ="${p.salle.cinema.getName()}"></h6>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text ="${p.salle.cinema.ville.getName()}"></h6>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text ="${p.dateProjection}"></h6>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text ="${p.prix}"></h6>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text ="${p.seance.getHeureDebut()}"></h6>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+            </div>
+            <br>
+
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item" th:class="${currentPage==0? 'page-item disabled':'page-item'}" >
+                        <a class="page-link" th:href="@{/projection(idf=${idf},page=0,keyword=${keyword})}">First</a></li>
+
+                    <li th:class="${currentPage==0? 'page-item disabled':'page-item'}" >
+                        <a class="page-link" th:href="@{/projection(idf=${idf},page=${currentPage - 1},keyword=${keyword})}" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+
+                    <li class="page-item" th:class="${currentPage == pages - 1 ? 'page-item disabled':'page-item'}" >
+                        <a  class="page-link" th:href="@{/projection(idf=${idf},page=${currentPage + 1},keyword=${keyword})}" >Next</a>
+                    </li>
+
+                    <li class="page-item" th:class="${currentPage == pages - 1 ? 'page-item disabled':'page-item'}" >
+                        <a class="page-link" th:href="@{/projection(idf=${idf},page=${pages - 1},keyword=${keyword})}" >Last</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </div>
+
+    </div></div>
+</body>
+</html>

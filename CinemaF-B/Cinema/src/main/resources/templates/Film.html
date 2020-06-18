@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Les Films </title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <div class ="m-5">
+        <nav class="navbar navbar-light bg-light">
+            <h1>Liste des Films </h1>
+            <form class="form-inline">
+
+                <input class="form-control mr-sm-2 " type="search" placeholder="Le nom du film" name="keyword" th:value="${keyword}" aria-label="Search">
+                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
+        </nav>
+        <br>
+
+
+        <div style=" display: flex ; justify-content: flex-start  ; margin: 8px " >
+        <div class="card" style="width: 18rem ; margin: 8px" th:each="f:${listeFilm}">
+            <img  class="card-img-top"  th:src="@{'imageFilm/' + ${f.id}} ">
+            <div class="card-body">
+                <h5 class="card-title" th:text ="${f.titre}"></h5>
+                <h6 class="card-subtitle mb-2 text-muted" th:text ="${f.duree}"></h6>
+                <p class="card-text" th:text="${f.description}==null?'Some quick example text to build on the card title and make up the bulk of the cards content.':${f.description}" ></p>
+                <a th:text ="${f.categorie.getName()}"></a><br><br>
+                <a class="btn btn-primary" th:href="@{/projection(idf=${f.id})}">Afficher</a>
+            </div>
+        </div></div></div>
+
+
+
+        <div class="ml-5 mr-5 mt-4 mb-4">
+            <nav aria-label="...">
+                <ul class="nav nav--pills">
+                    <li class="page-item active" aria-current="page" th:each="page,status:${pages}">
+                        <a th:class="${status.index==currentPage?'btn btn-success':'btn'}"
+                           th:href="@{film(page=${status.index},keyword=${keyword},size=${size})}"
+                           th:text="${status.index}">
+
+
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

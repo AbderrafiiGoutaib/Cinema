@@ -31,8 +31,8 @@ public class CinemaRestController {
      public byte[] images(@PathVariable(name = "id") Long id) throws Exception{
         Film f = filmRepository.findById(id).get();
         String photoName = f.getPhoto();
-        //System.getProperty("user.home"+"cinema/images")   Exemple
-        File file = new File("C:\\Users\\GOUTAIBABDERRAFII\\Desktop\\AbderrafiiGoutaib\\JEE\\Cinema\\imagesCinema\\"+photoName);
+        //System.getProperty("user.home"+"cinema/images")   Exemple C:\Users\GOUTAIBABDERRAFII\Desktop\AbderrafiiGoutaib\JEE\Cinema\CinemaF-B\imagesCinema
+        File file = new File("C:\\Users\\GOUTAIBABDERRAFII\\Desktop\\AbderrafiiGoutaib\\JEE\\Cinema\\CinemaF-B\\imagesCinema\\"+photoName);
         //File file = new File(System.getProperty("user.home"+"AbderrafiiGoutaib/JEE/imagesCinema/"+photoName));
         Path path = Paths.get(file.toURI());
         return Files.readAllBytes(path);
@@ -51,8 +51,8 @@ public class CinemaRestController {
                });
                 return listTickets ;
    }
-
 }
+
 @Data
 class TicketForm{
     private String nomClient;

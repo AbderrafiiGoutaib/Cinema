@@ -74,7 +74,7 @@ public class CinemaInitServiceImplementation implements ICinemaInitService {
     public void initFilms() {
         double[]  dure = new double[] {1,1.5,2,2.5,3};
         List<Categorie> categories = categorieRepository.findAll();
-        Stream.of("The god father","Avengers","who i am ","Now you see mee","The troy").forEach(titreFilm->{
+        Stream.of("The god father","Avengers","who i am ","Now you see mee","The troy","therevenant","madmax","jocker","darknight","parfum","ocean").forEach(titreFilm->{
             Film film =new Film();
             Random ran =new Random();
             film.setTitre(titreFilm);

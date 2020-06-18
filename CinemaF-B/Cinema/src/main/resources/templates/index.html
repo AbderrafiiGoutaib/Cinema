@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+
+      layout:decorator="Layout"
+
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Test je suis Abderrafii </title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="m-5">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Je suis abderrafii GOUTAIB </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Emsi centre groupe 1</h6>
+                <p class="card-text">Pour voir la liste des cinemas</p>
+               <a href="#" th:href="@{/cinema}">Cliquez-ici</a>
+
+            </div>
+        </div>
+    </div></div>
+</body>
+</html>

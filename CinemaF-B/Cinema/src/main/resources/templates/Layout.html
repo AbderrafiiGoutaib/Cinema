@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec ="https://http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Cinema</title>
+    <link rel ="stylesheet " href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src ="/webjars/jquery/3.4.1/dist/jquery.min.js"> </script>
+    <script src ="/webjars/bootstrap/4.1.0/js/bootstrap.min.css"> </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{cinema}">Cinema</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+<!--                <a class="nav-link" th:href="@{patients}">Home <span class="sr-only">(current)</span></a>-->
+            </li>
+
+
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{film}">Film</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{projection}">Projection</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span sec:authorize="isAuthenticated()"> <span sec:authentication="name"/></span>
+                    <span sec:authorize="!isAuthenticated()"> <span>Sign up / Log in</span></span>
+
+<!--                </a>-->
+                </a>>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="@{login}">Log In</a>
+                    <a class="dropdown-item" sec:authorize="isAuthenticated()" th:href="@{logout}">Log out</a>
+
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section layout:fragment="content"></section>
+
+
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50 footer">
+    <div class="container text-center">
+        <small>Copyright &copy; Made with love by <a href="https://www.linkedin.com/in/AbderrafiiGoutaib/">AbderrafiiGoutaib</a></small>
+    </div>
+</footer>
+
+</body>
+</html>

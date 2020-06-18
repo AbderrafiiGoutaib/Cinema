@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card text-center">
+        <div class="card-header">
+            Enregistrement bien fait
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">les informations du Cinema</h5>
+            <div class ="form-group"><label class="font-italic"> ID : </label> <label class="font-weight-bold" th:text="${cinema.id}"></label></div>
+            <div class ="form-group"><label class="font-italic"> Le nom du cinema : </label> <label class="font-weight-bold" th:text="${cinema.name}"></label></div>
+            <div class ="form-group"><label class="font-italic"> Le nombre des salles : </label> <label class="font-weight-bold" th:text="${cinema.nombredesalles}"></label></div>
+            <div class ="form-group"><label class="font-italic"> La ville : </label> <label class="font-weight-bold" th:text="${cinema.ville.getName()}"></label></div>
+
+        </div>
+        <div class="card-footer text-muted">
+            <a  class="btn btn-primary" th:href="@{/cinema}">Retourner a la liste des cinemas !</a>
+        </div>
+
+    </div></div>
+</body>
+</html>

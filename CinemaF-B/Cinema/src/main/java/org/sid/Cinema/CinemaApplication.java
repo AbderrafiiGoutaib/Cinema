@@ -24,15 +24,15 @@ public class CinemaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	repositoryRestConfiguration.exposeIdsFor(Film.class, Salle.class, Ticket.class); // pour passer le id d'un film
-	iCinemaInitService.initVilles();
-	iCinemaInitService.initCinemas();
-	iCinemaInitService.initSalles();
-	iCinemaInitService.initPlaces();
-	iCinemaInitService.initSeances();
-    iCinemaInitService.initCategories();
-	iCinemaInitService.initFilms();
-    iCinemaInitService.initProjections();
-	iCinemaInitService.initTickets();
+//	iCinemaInitService.initVilles();
+//	iCinemaInitService.initCinemas();
+//	iCinemaInitService.initSalles();
+//	iCinemaInitService.initPlaces();
+//	iCinemaInitService.initSeances();
+//    iCinemaInitService.initCategories();
+//	iCinemaInitService.initFilms();
+//    iCinemaInitService.initProjections();
+//	iCinemaInitService.initTickets();
         System.out.println("*******************************enregistrement bien fait*******************************");
 
 	}

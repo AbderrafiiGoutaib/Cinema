@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter Projection</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card m-5">
+        <div class="card-body">
+
+<!--            <div class="mx-auto mt-3"  th:if="${mode=='new'}">-->
+<!--                <h2 class="d-flex justify-content-center">Ajouter Cinema</h2>-->
+<!--            </div>-->
+<!--            <div class="mx-auto mt-3"  th:if="${mode=='edit'}">-->
+<!--                <h2 class="d-flex justify-content-center">Modifier Cinema</h2>-->
+<!--            </div>-->
+
+            <form  th:action="@{ajoutercinema}" th:method="post">
+<!--                <div class="form-group" >-->
+<!--                    <label for="id" th:if="${mode=='edit'}" >Id</label>-->
+<!--                    <label for="id" class="form-control"  id="Id" aria-describedby="Id" th:if="${mode=='edit'}" th:text="${cinema.id}"></label>-->
+<!--                    <input type="hidden" class="form-control" name="id"  aria-describedby="id" th:value="${cinema.id}" ><br>-->
+<!--                </div><br>-->
+                <div class="form-group">
+                    <label for="nom">La date du projection </label>
+                    <input type="text" class="form-control" name="name" id="nom" aria-describedby="DateProjection" ><br>
+
+
+                    </div><br>
+                    <div class="form-group">
+                        <label for="nbrsalle">Le prix </label>
+                        <input type="text" class="form-control" name="nombredesalles" id="nbrsalle" ><br>
+
+
+
+                        </div><br>
+                        <div class="form-group"  >
+                            <label for="ville">Film</label>
+                            <select class="form-control"  name="ville" >
+                                <option ></option>
+
+                            </select>
+
+
+                        </div><br><div class="form-group"  >
+                            <label for="ville">Salle</label>
+                            <select class="form-control"  name="ville" >
+                                <option ></option>
+
+                            </select>
+
+
+                        </div><br><div class="form-group"  >
+                            <label for="ville">Seance</label>
+                            <select class="form-control" id="ville" name="ville" >
+                                <option ></option>
+
+                            </select>
+
+
+                        </div><br>
+
+
+                        <div>
+                            <button type="submit" class="btn btn-primary mb-4">Valider</button></div>
+                    </div></div></form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
